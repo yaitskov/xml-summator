@@ -1,0 +1,36 @@
+This software sums numbers from xml file that confirm  Xpath pattern /sum/summand@value.
+
+Build with maven
+
+$ mvn clean install
+
+$ java -jar target/xml-summator-1.0-SNAPSHOT.jar test.xml 
+
+Example of output:
+
+netsquire@Victorion count-material$ java -jar target/xml-summator-1.0-SNAPSHOT.jar 
+ERROR EntryPoint : usage: ( <path to xml file> | - )
+net.sf.dan.xmlsummator.InvalidUserInputException: usage: ( <path to xml file> | - )
+	at net.sf.dan.xmlsummator.EntryPoint.main(EntryPoint.java:29)
+netsquire@Victorion count-material$ java -jar target/xml-summator-1.0-SNAPSHOT.jar asdf
+ERROR EntryPoint : asdf (No such file or directory)
+java.io.FileNotFoundException: asdf (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:97)
+	at net.sf.dan.xmlsummator.EntryPoint.getSourceByteStream(EntryPoint.java:67)
+	at net.sf.dan.xmlsummator.EntryPoint.main(EntryPoint.java:31)
+netsquire@Victorion count-material$ java -jar target/xml-summator-1.0-SNAPSHOT.jar test.xml 
+DEBUG XmlSummator : item 1 got 2
+DEBUG XmlSummator : item 2 got 2
+DEBUG XmlSummator : item 3 got 2
+DEBUG XmlSummator : item 4 got -2
+DEBUG XmlSummator : intermediate sum is 4, old total 0
+Total sum is 4
+netsquire@Victorion count-material$ java -jar target/xml-summator-1.0-SNAPSHOT.jar test.xml 
+DEBUG XmlSummator : item 1 got 2
+DEBUG XmlSummator : item 2 got 2
+DEBUG XmlSummator : item 3 got 2
+DEBUG XmlSummator : item 4 got -2
+DEBUG XmlSummator : intermediate sum is 4, old total 0
+INFO  EntryPoint : Total sum is 4
